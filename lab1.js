@@ -1,101 +1,104 @@
-'use strict'
-
-function lab1_1() {
-
-
-    let age, gender;
-
-    age = prompt('Введите свой возраст: ', '');
-    if (age > 17)
-        gender = prompt('Введите свою гендерную принадлежность (М/Ж): ', '');
-
-    if (age >= 0 & age <= 17) {
-        alert("Вам работать ещё рано — учитесь");
-    } else if ((age >= 18 & age <= 59 & gender == 'М') || (age >= 18 & age <= 54 & gender == 'Ж')) {
-        alert("Кто хорошо работает - тот хорошо ест)) (но это не точно)");
-    } else if ((age >= 60 & age <= 64 & gender == 'М') || (age >= 55 & age <= 59 & gender == 'Ж')) {
-        alert("Вы ещё живы? Скоро пенсия!");
-    } else if ((age > 64 & gender == 'М') || (age > 59 & gender == 'Ж')) {
-        alert("Молодчяра! Можно отдыхать.")
-    } else alert("Ты либо не можешь посчитать сколько тебе лет, либо тебе пора в Европу.")
+"use strict";
+function vozrast_pol() {
+    console.clear()
+    let age,gender;
+age = prompt('Сколько вам лет?');
+gender = prompt('Вы мужчина или женщина?');
+if ((age>=0 && age <= 17)&&(gender=='мужчина' || gender=='женщина')){
+    alert('Вам работать ещё рано — учитесь!');
+}  else if ((age>=18 && age <= 59) && gender=='мужчина'){
+    alert('Вам ещё работать и работать!');
+} else if ((age>=18 && age <= 54) && gender=='женщина'){
+    alert('Вам ещё работать и работать!');
+}else if ((age>=60 && age < 65) && gender=='мужчина'){
+    alert('Скоро пенсия!');
+} else if ((age>=55 && age < 60) && gender=='женщина'){
+    alert('Скоро пенсия!');
+}  else if (age >= 65 && gender=='мужчина'){
+    alert('Вам пора на пенсию!');
+} else if (age >= 60 && gender=='женщина'){
+    alert('Вам пора на пенсию!');
+}  else {
+    alert('Да кто ты такой?')
+}
 }
 
-function lab1_2() {
-    
-    /*
+function crow() {
+    console.clear()
+    let num, message, mod;
+    num = +prompt('Введите количество ворон', 1);
+    mod = num % 100;
+    if (mod > 10 && mod < 20 ) {
+        message = `На ветке сидит ${num} ворон`;
+    } 
+    else {
+        switch (num % 10) {
+            case 1:
+            message = `На ветке сидит ${num} ворона`;
+                break;
+            case 2:
+            case 3:
+            case 4:
+            message = `На ветке сидит ${num} вороны`;
+                break;
+            default:
+                message = `На ветке сидит ${num} ворон`;
+                break;
+        }
 
-    1 ворона
-    2 вороны
-    5 ворон 
+    }
+    alert(message);
+}
 
-    */
-
-
-    var num = prompt('Сколько-сколько говоришь их на ветках..?', '');
-    var n = num % 100;
-    var n1 = num % 10;
-    if (n1 == 1 && n != 11 && n >= 10) {
-        alert('на ветке ' + num + ' ворона');
-    } else if (n >= 10 && n <= 20 || n1 >= 5 && n1 <= 9) {
-        alert('на ветке ' + num + ' ворон');
-    } else if (n1 > 1 && n1 < 5 && n >= 10) {
-        alert('на ветке ' + num + ' вороны');
+function onKeydown(event, num) {
+    if (event.code === 'Escape') {
+        num = null;
+        return;
     }
 }
-
-function lab1_3() {
+function hundred() {
+    console.clear()
     let num;
     do {
-      num = prompt("Введите число больше 100:");
-    } while (num !== null && (isNaN(num) || +num <= 100));
-  }
-  
+        num = prompt('Введите число большее 100');
+        if (num === null) return; // выход из функции, если нажали "Отмена"
+        if (num === '') continue; // продолжаем цикл, если введена пустая строка
+    } while (num <= 100);
+    alert(num);
+    document.addEventListener('keydown', function(event) {
+        onKeydown(event, num);
+    });
+}
 
-function lab1_4() {
-    let n = prompt("до какого простые искать будем: ", '');
-
-    for (let i = 2; i <= n; i++) {
-        let flag = 1;
-        if (i > 2 && i % 2 != 0)
-        {
-            for (let j = 3; j*j <= i ; j=j+2)
-            {
-                if (i%j==0)
-                {
-                    flag=0;
-                    break;
-                }
-            }
-        }
-        else if (i != 2) flag = 0;
-        if (flag==1) {console.log(i + '\n');}
+function simple() {
+    console.clear()
+    let n;
+    n = prompt('Введите число большее чем 2');
+    easy:
+    for (let i = 2; i <= n; i++) { 
+    
+    for (let j = 2; j < i; j++) {
+        if (i % j == 0) continue easy;
+    }
+    console.log( i );
     }
 }
 
-function lab1_5() {
-    let n = 6;
-    let m = prompt('Введите высоту матрицы: ', '')
-    
+function catdog() {
+    console.clear()
+     const n = prompt("Введите целое число строк");
+     const s1 = "dog dog dog cat cat dog";
+     const s2 = "dog dog cat cat dog dog";
+     const s3 = "dog cat cat dog dog dog";
+     var str = [s1, s2, s3];
+     for (let i = 0; i < n; i++) {
+         console.log(str[i%3]);
+         }
+ 
+   
+}
 
-    var matrix = new Array(m);
-    for (var i = 0; i < m; i++) {
-        matrix[i] = new Array(n);
-    }
-    let flag = 0;
-    for (let i = 0; i < m; i++) {
-        if (flag <= 2) {
-            for (let j = 0; j < n; j++) {
-                if (((j == 3 || j == 4) && flag == 0) || ((j == 2 || j == 3) && flag == 1) || ((j == 1 || j == 2) && flag == 2)) matrix[i][j] = 'cat' 
-                else matrix[i][j] = 'dog';
-            }
-        }
-        if (flag > 2) {
-            for (let j = 0; j < n; j++){
-                if (((j == 2 || j == 3) && flag == 3) || ((j == 3 || j == 4) && flag == 4)) matrix[i][j] = 'cat' 
-                else matrix[i][j] = 'dog';
-            }
-        }
-        flag += 1;
+
 
         if (flag == 4) flag = 0;
     }
