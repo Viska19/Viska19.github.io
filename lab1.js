@@ -97,10 +97,3 @@ function catdog() {
  
    
 }
-
-
-
-        if (flag == 4) flag = 0;
-    }
-    console.log(matrix);
-}
