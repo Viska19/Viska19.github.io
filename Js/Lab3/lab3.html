@@ -70,8 +70,8 @@
                 assert.strictEqual(checkSpam('_XxX_'), true);
             });
 
-            it("checkSpam('Viagra') => true", function () {
-                assert.strictEqual(checkSpam('Viagra'), true);
+            it("checkSpam('__Viagra__') => true", function () {
+                assert.strictEqual(checkSpam('__Viagra__'), true);
             });
 
             it("checkSpam('test') => false", function () {
@@ -131,7 +131,8 @@
             });
 
         });
-        </script>
+
+    </script>
 
     <!-- элемент с id="mocha" будет содержать результаты тестов -->
     <div id="mocha"></div>
